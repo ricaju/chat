@@ -1,0 +1,14 @@
+@import "src/styles/abstracts/colors";
+@import "src/styles/abstracts/functions";
+
+.root {
+  display: flex;
+  flex-direction: row;
+}
+
+.iconContainer {
+  width: rem(48);
+  height: rem(48);
+  border-radius: 50%;
+  border: rem(1) solid $color-white
+}

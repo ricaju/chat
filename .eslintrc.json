@@ -1,0 +1,22 @@
+{
+ "env": {
+    "browser": true,
+        "es2021": true,
+        "node": true
+},
+    "extends": "react-app",
+    "rules": {
+    "react/react-in-jsx-scope": "off",
+        "camelcase": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react-hooks/exhaustive-deps": [
+        1,
+        { "enableDangerousAutofixThisMayCauseInfiniteLoops": true }
+    ]
+},
+    "settings": {
+    "react": {
+        "version": "detect"
+    }
+}
+}

@@ -1,36 +1,40 @@
 import React, { FC, memo, useCallback } from "react";
 import { DATA } from "domain/constants"
 import style from "styles/components/Chat.module.scss"
-import {Comment} from "../domain/types";
+import { CommentWithReplay } from "../domain/types";
 import { ChatItem } from "./ChatItem";
-import { checkDateDifference, dateConverter } from "util/date";
+import { groupBy, orderBy } from "lodash";
 
 type Props = {}
 
 export const Chat: FC<Props> = memo(function Chat() {
-  const {comments} = useChat();
+  const { commentsWithReplays } = useChat();
 
-  const renderChatHeader = useCallback( (timestamp :number, parent?: string) => {
-    if(checkDateDifference(timestamp, parent)) {
-      return <div>{dateConverter(timestamp).getFullYear()}</div>
-    }
-  }, [])
-
-  const renderChatItem = useCallback( (comment: Comment, index: number) => {
+  const renderChatItem = useCallback( (comment: CommentWithReplay) => {
     return (
       <>
-        {renderChatHeader(comment.timestamp, comment?.parent_id)}
+        <div>vrijeme</div>
         <ChatItem comment={comment}/>
      </>)
-  }, [renderChatHeader])
+  }, [])
 
-  return <div className={style.root}>{comments.map(renderChatItem)}</div>;
+  return <div className={style.root}>{commentsWithReplays.map(renderChatItem)}</div>;
 });
 
 function useChat() {
   const { data : { comments }} = DATA
 
-  //todo reduce data parent to replays
+  const groupedByReplays = groupBy(comments.filter(comment => comment.parent_id), "parent_id")
 
-  return { comments }
+  const commentsWithReplays = comments.reduce<CommentWithReplay[]>((withReplays, comment) => {
+    const keys = Object.keys(groupedByReplays)
+    if(keys.includes(comment.id)) {
+      withReplays.push({...comment, replays: groupedByReplays[comment.id]})
+    } else if(!comment.parent_id) {
+      withReplays.push(comment)
+    }
+    return orderBy(withReplays, "timestamp", ["asc"])
+  }, [])
+
+  return { commentsWithReplays }
 }

@@ -21,7 +21,7 @@
           "timestamp":414514860000
         },
         {
-          "id":"2",
+          "id":"3",
           "parent_id":"1",
           "author":{
             "name":"Ines Grah",
@@ -31,7 +31,7 @@
           "timestamp":414516900000
         },
         {
-          "id":"1",
+          "id":"4",
           "author":{
             "name":"Pero Pipovski",
             "picture":"img/pero.jpg"

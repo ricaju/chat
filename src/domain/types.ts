@@ -11,3 +11,7 @@ export type Comment = {
   text: string
   timestamp: number
 }
+
+export type CommentWithReplay = Comment & {
+  replays?: Comment[]
+}

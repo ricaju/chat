@@ -12,10 +12,10 @@ export const Chat: FC<Props> = memo(function Chat() {
 
   const renderChatItem = useCallback( (comment: Comment) => {
     return (
-      <>
+      <div key={comment.id}>
         <div>vrijeme</div>
         <ChatItem comment={comment}/>
-     </>)
+     </div>)
   }, [])
 
   return <div className={style.root}>{commentsWithReplays.map(renderChatItem)}</div>;

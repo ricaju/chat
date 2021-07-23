@@ -1,20 +1,21 @@
 import classNames from "classnames";
-import React, { FC, memo, useCallback } from "react";
+import React, { FC, memo, useCallback, useMemo } from "react";
 import style from "styles/components/ChatItem.module.scss"
 import { Comment } from "../domain/types";
 import { dateConverter } from "../util/date";
+import { ReplayButton } from "./ReplayButton";
 
 type Props = {
   comment: Comment
   className?: string
 }
 export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) {
-  useChatItem();
+  const { replayText } = useChatItem(comment);
 
   const { author: { name, picture }, text, timestamp, replays } = comment
 
   const renderReplays = useCallback( (replays?: Comment[]) => {
-    return replays && replays.map(comment => <ChatItem comment={comment}  className={style.replay}/>)
+    return replays && replays.map(comment => <ChatItem comment={comment}  className={style.replay} key={comment.id}/>)
   }, [])
 
   //todo: check for link in text
@@ -30,6 +31,7 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
           <div className={style.replayContainer}>
             <p className={style.chatTime}>{dateConverter(timestamp, "LT")}</p>
             <div className={style.dot}/>
+            <ReplayButton>{replayText}</ReplayButton>
           </div>
         </div>
       </div>
@@ -37,4 +39,17 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
   </div>)
 });
 
-function useChatItem() {}
+function useChatItem(comment: Comment) {
+  const { replays } = comment
+
+  const replayText = useMemo( () => {
+    if(replays && replays.length > 1)  {
+      return `Replay (${replays.length})`
+    } else {
+      return "Replay"
+    }
+
+  }, [replays])
+
+  return { replayText }
+}

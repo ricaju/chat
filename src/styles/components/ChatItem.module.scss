@@ -36,14 +36,11 @@
 
 .authorName {
   color: $color-text-primary;
-  font-size: rem(18);
-  font-weight: 600;
+  font-family: "Inter SemiBold", sans-serif;
 }
 
 .text {
   color: $color-text-secondary;
-  font-weight: 500;
-  font-size: rem(18);
   margin-top: rem(12);
 }
 
@@ -62,7 +59,6 @@
 .chatTime {
   color: $color-text-secondary;
   font-size: rem(16);
-  font-weight: 500;
 }
 
 .dot {

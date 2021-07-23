@@ -43,7 +43,7 @@ function useChatItem(comment: Comment) {
   const { replays } = comment
 
   const replayText = useMemo( () => {
-    if(replays && replays.length > 1)  {
+    if(replays && replays.length > 0)  {
       return `Replay (${replays.length})`
     } else {
       return "Replay"

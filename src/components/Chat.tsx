@@ -25,9 +25,9 @@ function useChat() {
   const { data : { comments }} = DATA
 
   const groupedByReplays = groupBy(comments.filter(comment => comment.parent_id), "parent_id")
+  const keys = Object.keys(groupedByReplays)
 
   const commentsWithReplays = comments.reduce<Comment[]>((withReplays, comment) => {
-    const keys = Object.keys(groupedByReplays)
     if(keys.includes(comment.id)) {
       withReplays.push({...comment, replays: groupedByReplays[comment.id]})
     } else if(!comment.parent_id) {

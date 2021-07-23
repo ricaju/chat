@@ -1,8 +1,11 @@
 import dayjs, { UnitType } from "dayjs";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import { Format } from "../domain/types";
+dayjs.extend(LocalizedFormat)
 
 
-export function dateConverter(timeStamp: number) {
-  return dayjs(timeStamp).toDate()
+export function dateConverter(timeStamp: number, format: Format) {
+  return dayjs(timeStamp).format(format)
 }
 
 
@@ -10,5 +13,5 @@ export function checkDateDifference(t1: number, isReplay?: string, unit: UnitTyp
   if(isReplay) {
     return
   }
-  return dayjs(dateConverter(t1)).diff(dayjs(), unit) < lessThen
+  return /*dayjs(dateConverter(t1)).diff(dayjs(), unit) < lessThen*/
 }

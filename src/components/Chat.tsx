@@ -1,7 +1,7 @@
 import React, { FC, memo, useCallback } from "react";
 import { DATA } from "domain/constants"
 import style from "styles/components/Chat.module.scss"
-import { CommentWithReplay } from "../domain/types";
+import { Comment } from "../domain/types";
 import { ChatItem } from "./ChatItem";
 import { groupBy, orderBy } from "lodash";
 
@@ -10,7 +10,7 @@ type Props = {}
 export const Chat: FC<Props> = memo(function Chat() {
   const { commentsWithReplays } = useChat();
 
-  const renderChatItem = useCallback( (comment: CommentWithReplay) => {
+  const renderChatItem = useCallback( (comment: Comment) => {
     return (
       <>
         <div>vrijeme</div>
@@ -26,7 +26,7 @@ function useChat() {
 
   const groupedByReplays = groupBy(comments.filter(comment => comment.parent_id), "parent_id")
 
-  const commentsWithReplays = comments.reduce<CommentWithReplay[]>((withReplays, comment) => {
+  const commentsWithReplays = comments.reduce<Comment[]>((withReplays, comment) => {
     const keys = Object.keys(groupedByReplays)
     if(keys.includes(comment.id)) {
       withReplays.push({...comment, replays: groupedByReplays[comment.id]})

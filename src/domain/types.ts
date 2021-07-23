@@ -10,8 +10,8 @@ export type Comment = {
   author: Author
   text: string
   timestamp: number
-}
-
-export type CommentWithReplay = Comment & {
   replays?: Comment[]
 }
+
+
+export type Format = "LT"

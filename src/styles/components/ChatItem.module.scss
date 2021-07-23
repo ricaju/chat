@@ -3,16 +3,72 @@
 
 .root {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
 }
 
 .iconContainer {
   width: rem(48);
   height: rem(48);
   border-radius: 50%;
-  border: rem(1) solid $color-white
+  border: rem(1) solid $color-white;
+  margin-right: rem(12)
 }
 
 .replay {
-  margin-left: rem(25);
+  margin-left: rem(60);
+
+  &:first-child {
+    //todo add lines
+  }
+}
+.textContainer {
+  background-color: $color-white;
+  border-radius: rem(8);
+  border: rem(1) solid $color-border;
+  display: flex;
+  flex-direction: column;
+  padding: rem(24);
+}
+
+.authorName {
+  color: $color-text-primary;
+  font-size: rem(18);
+  font-weight: 600;
+}
+
+.text {
+  color: $color-text-secondary;
+  font-weight: 500;
+  font-size: rem(18);
+  margin-top: rem(12);
+}
+
+.replayContainer {
+  display: flex;
+  margin-top: rem(12);
+  align-items: center;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: rem(24);
+}
+
+.chatTime {
+  color: $color-text-secondary;
+  font-size: rem(16);
+  font-weight: 500;
+}
+
+.dot {
+  height: rem(2);
+  width: rem(2);
+  border-radius: 50%;
+  background-color: $color-text-secondary;
+  margin: 0 rem(8);
 }

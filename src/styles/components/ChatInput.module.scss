@@ -7,10 +7,11 @@
   border-radius: rem(8);
   padding: rem(8);
   position: absolute;
-  bottom: 0;
+  bottom: rem(32);
   left: rem(32);
   right: rem(32);
   display: flex;
+  max-width: rem(953);
 }
 
 .buttonText {

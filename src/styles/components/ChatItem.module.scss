@@ -20,9 +20,24 @@
 
 .replay {
   margin-left: rem(60);
+  position: relative;
 
-  &:first-child {
-    //todo add lines
+  &:nth-child(2){
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: rem(24);
+      height: rem(48);
+      right: rem(12);
+      left: rem(-36);
+      border-bottom: rem(2) solid $color-border;
+      border-left: rem(2) solid $color-border;
+      border-bottom-left-radius:  rem(4);
+      overflow: hidden;
+      transform: translateY(-50%);
+    }
   }
 }
 .textContainer {

@@ -1,0 +1,10 @@
+@import "src/styles/abstracts/colors";
+@import "src/styles/abstracts/functions";
+
+.root {
+  padding-left: rem(16);
+  font-family: "Inter Medium", sans-serif;
+  width: 100%;
+  font-size: rem(18);
+  color: $color-text-primary;
+}

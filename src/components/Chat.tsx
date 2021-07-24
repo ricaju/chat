@@ -5,6 +5,7 @@ import { Comment } from "../domain/types";
 import { ChatItem } from "./ChatItem";
 import { groupBy, orderBy } from "lodash";
 import { checkDateDifference, dateConverter } from "../util/date";
+import { ChatInput } from "./ChatInput";
 
 type Props = {}
 
@@ -23,7 +24,10 @@ export const Chat: FC<Props> = memo(function Chat() {
 
   return (
     <div className={style.root}>
-      <div className={style.content}>{commentsWithReplays.map(renderChatItem)}</div>
+      <div className={style.content}>
+        {commentsWithReplays.map(renderChatItem)}
+        <ChatInput/>
+      </div>
     </div>
   )
 });

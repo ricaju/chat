@@ -1,0 +1,13 @@
+@import "src/styles/abstracts/colors";
+@import "src/styles/abstracts/functions";
+
+.root {
+  background-color: $color-white;
+  border: rem(1) solid $color-border;
+  border-radius: rem(8);
+  padding: rem(8);
+  position: absolute;
+  bottom: 0;
+  left: rem(32);
+  right: rem(32);
+}

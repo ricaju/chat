@@ -4,13 +4,17 @@ import style from "styles/components/ChatItem.module.scss"
 import { Comment } from "../domain/types";
 import { dateConverter } from "../util/date";
 import { ReplayButton } from "./ReplayButton";
+import ivana from "assets/img/ivana.jpg"
+import ines from "assets/img/ines.jpg"
+import pero from "assets/img/pero.jpg"
+import zmaj from "assets/img/zmaj.jpg"
 
 type Props = {
   comment: Comment
   className?: string
 }
 export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) {
-  const { replayText } = useChatItem(comment);
+  const { replayText, renderFakeImgPath } = useChatItem(comment);
 
   const { author: { name, picture }, text, timestamp, replays } = comment
 
@@ -22,7 +26,9 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
   return (
     <div className={classNames(style.root, className)}>
       <div className={style.content}>
-        <div className={style.iconContainer}></div>
+        <div className={style.iconContainer}>
+          <img src={renderFakeImgPath(picture)} alt={name}/>
+        </div>
         <div className={style.chatContainer}>
           <div className={style.textContainer}>
             <p className={style.authorName}>{name}</p>
@@ -51,5 +57,18 @@ function useChatItem(comment: Comment) {
 
   }, [replays])
 
-  return { replayText }
+  const renderFakeImgPath = useCallback( (picture) => {
+    switch (picture) {
+      case "img/ines.jpg":
+        return ines
+      case "img/zmaj.jpg":
+        return zmaj
+      case "img/ivana.jpg":
+        return ivana
+      case "img/pero.jpg":
+        return pero
+    }
+  }, [])
+
+  return { replayText, renderFakeImgPath }
 }

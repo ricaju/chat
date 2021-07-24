@@ -4,6 +4,7 @@ import style from "styles/components/ChatItem.module.scss"
 import { Comment } from "../domain/types";
 import { dateConverter } from "../util/date";
 import { ReplayButton } from "./ReplayButton";
+import { Anchorme } from 'react-anchorme'
 import ivana from "assets/img/ivana.jpg"
 import ines from "assets/img/ines.jpg"
 import pero from "assets/img/pero.jpg"
@@ -22,7 +23,6 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
     return replays && replays.map(comment => <ChatItem comment={comment}  className={style.replay} key={comment.id}/>)
   }, [])
 
-  //todo: check for link in text
   return (
     <div className={classNames(style.root, className)}>
       <div className={style.content}>
@@ -32,7 +32,7 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
         <div className={style.chatContainer}>
           <div className={style.textContainer}>
             <p className={style.authorName}>{name}</p>
-            <p className={style.text}>{text}</p>
+            <p className={style.text}><Anchorme>{text}</Anchorme></p>
           </div>
           <div className={style.replayContainer}>
             <p className={style.chatTime}>{dateConverter(timestamp, "LT")}</p>

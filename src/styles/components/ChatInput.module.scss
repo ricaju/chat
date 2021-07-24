@@ -10,4 +10,10 @@
   bottom: 0;
   left: rem(32);
   right: rem(32);
+  display: flex;
+}
+
+.buttonText {
+  margin-left: rem(12);
+  white-space: nowrap;
 }

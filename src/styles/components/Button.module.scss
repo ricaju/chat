@@ -1,0 +1,12 @@
+@import "src/styles/abstracts/colors";
+@import "src/styles/abstracts/functions";
+
+.root {
+  background-color: $app-background;
+  border-radius: rem(6);
+  display: flex;
+  padding: rem(16);
+  align-items: center;
+  color: $color-white;
+  font-family: "Inter Medium", sans-serif;
+}

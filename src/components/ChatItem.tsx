@@ -3,19 +3,19 @@ import React, { FC, memo, useCallback, useMemo } from "react";
 import style from "styles/components/ChatItem.module.scss"
 import { Comment } from "../domain/types";
 import { dateConverter } from "../util/date";
-import { ReplayButton } from "./ReplayButton";
 import { Anchorme } from 'react-anchorme'
 import ivana from "assets/img/ivana.jpg"
 import ines from "assets/img/ines.jpg"
 import pero from "assets/img/pero.jpg"
 import zmaj from "assets/img/zmaj.jpg"
+import { Button } from "./Button";
 
 type Props = {
   comment: Comment
   className?: string
 }
 export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) {
-  const { replayText, renderFakeImgPath } = useChatItem(comment);
+  const { replayText, handleReplay, renderFakeImgPath } = useChatItem(comment);
 
   const { author: { name, picture }, text, timestamp, replays } = comment
 
@@ -37,7 +37,7 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
           <div className={style.replayContainer}>
             <p className={style.chatTime}>{dateConverter(timestamp, "LT")}</p>
             <div className={style.dot}/>
-            <ReplayButton>{replayText}</ReplayButton>
+            <Button variant="text" onClick={handleReplay}>{replayText}</Button>
           </div>
         </div>
       </div>
@@ -47,6 +47,8 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
 
 function useChatItem(comment: Comment) {
   const { replays } = comment
+
+  const handleReplay = useCallback( () => {}, [])
 
   const replayText = useMemo( () => {
     if(replays && replays.length > 0)  {
@@ -70,5 +72,5 @@ function useChatItem(comment: Comment) {
     }
   }, [])
 
-  return { replayText, renderFakeImgPath }
+  return { replayText, renderFakeImgPath, handleReplay }
 }

@@ -2,12 +2,25 @@
 @import "src/styles/abstracts/functions";
 
 .root {
+  border-radius: rem(8);
+  overflow: hidden;
+}
+
+.content {
   width: 100%;
   max-width: rem(1032);
   height: auto;
   max-height: rem(864);
   background-color: $color-chat-background;
-  border-radius: rem(8);
   padding: 0 rem(32) rem(32) rem(32);
   overflow-y: auto;
+}
+
+.date {
+  font-size: rem(13);
+  color: $color-text-secondary;
+  display: flex;
+  justify-content: center;
+  margin: rem(42) 0;
+  font-family: "Inter Medium", sans-serif;
 }

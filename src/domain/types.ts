@@ -14,4 +14,4 @@ export type Comment = {
 }
 
 
-export type Format = "LT"
+export type Format = "LT" | "dddd, D. MM. YYYY."

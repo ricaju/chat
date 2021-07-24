@@ -4,6 +4,7 @@ import style from "styles/components/Chat.module.scss"
 import { Comment } from "../domain/types";
 import { ChatItem } from "./ChatItem";
 import { groupBy, orderBy } from "lodash";
+import { checkDateDifference, dateConverter } from "../util/date";
 
 type Props = {}
 
@@ -13,16 +14,22 @@ export const Chat: FC<Props> = memo(function Chat() {
   const renderChatItem = useCallback( (comment: Comment) => {
     return (
       <div key={comment.id}>
-        <div>vrijeme</div>
+        <div className={style.date}>
+          {checkDateDifference(comment.timestamp) ?
+            dateConverter(comment.timestamp, "dddd, D. MM. YYYY."): "Today"}</div>
         <ChatItem comment={comment}/>
      </div>)
   }, [])
 
-  return <div className={style.root}>{commentsWithReplays.map(renderChatItem)}</div>;
+  return (
+    <div className={style.root}>
+      <div className={style.content}>{commentsWithReplays.map(renderChatItem)}</div>
+    </div>
+  )
 });
 
 function useChat() {
-  const { data : { comments }} = DATA
+  const { data : { comments } } = DATA
 
   const groupedByReplays = groupBy(comments.filter(comment => comment.parent_id), "parent_id")
   const keys = Object.keys(groupedByReplays)

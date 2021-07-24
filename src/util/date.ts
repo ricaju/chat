@@ -5,13 +5,11 @@ dayjs.extend(LocalizedFormat)
 
 
 export function dateConverter(timeStamp: number, format: Format) {
-  return dayjs(timeStamp).format(format)
+  const d = dayjs(timeStamp)
+  return d.format(format)
 }
 
 
-export function checkDateDifference(t1: number, isReplay?: string, unit: UnitType = "day", lessThen = 1) {
-  if(isReplay) {
-    return
-  }
-  return /*dayjs(dateConverter(t1)).diff(dayjs(), unit) < lessThen*/
+export function checkDateDifference(t1: number, unit: UnitType = "day") {
+  return dayjs(dayjs(t1)).diff(dayjs(), unit) < - 1
 }

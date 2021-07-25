@@ -32,7 +32,7 @@ export const ChatItem: FC<Props> = memo(function ChatItem({comment, className}) 
         <div className={style.chatContainer}>
           <div className={style.textContainer}>
             <p className={style.authorName}>{name}</p>
-            <p className={style.text}><Anchorme>{text}</Anchorme></p>
+            <div><p className={style.text}><Anchorme>{text}</Anchorme></p></div>
           </div>
           <div className={style.replayContainer}>
             <p className={style.chatTime}>{dateConverter(timestamp, "LT")}</p>

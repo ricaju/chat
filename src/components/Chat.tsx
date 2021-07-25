@@ -17,7 +17,7 @@ export const Chat: FC<Props> = memo(function Chat() {
       <div key={comment.id}>
         <div className={style.date}>
           {checkDateDifference(comment.timestamp) ?
-            dateConverter(comment.timestamp, "dddd, D. MM. YYYY."): "Today"}</div>
+            dateConverter(comment.timestamp, "dddd, D. MM. YYYY.") : "Today"}</div>
         <ChatItem comment={comment}/>
      </div>)
   }, [])

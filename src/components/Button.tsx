@@ -9,7 +9,7 @@ type Props = {
   variant?: "contained" | "text"
 }
 
-export const Button: FC<Props> = memo(function Button({ className, onClick, variant = "contained", children}) {
+export const Button: FC<Props> = memo(function Button({ className, onClick, variant = "contained", children }) {
   useButton();
 
   const buttonClassNames = useMemo(() => {

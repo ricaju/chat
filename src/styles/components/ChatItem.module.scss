@@ -55,6 +55,10 @@
 .text {
   color: $color-text-secondary;
   margin-top: rem(12);
+  display: flex;
+  flex-wrap: wrap;
+  width: min-content;
+  white-space: pre;
 }
 
 .replayContainer {

@@ -9,12 +9,16 @@
 
 .content {
   width: 100%;
-  max-width: rem(1032);
+  min-width: rem(1032);
   height: auto;
   max-height: rem(864);
   background-color: $color-chat-background;
   padding: 0 rem(32) rem(32) rem(32);
   overflow-y: auto;
+
+  @media only screen and (max-width: 1034px) {
+    min-width: unset;
+  }
 }
 
 .date {

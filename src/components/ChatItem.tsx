@@ -59,7 +59,7 @@ function useChatItem(comment: Comment) {
 
   }, [replays])
 
-  const renderFakeImgPath = useCallback( (picture) => {
+  const renderFakeImgPath = useCallback( (picture : string) => {
     switch (picture) {
       case "img/ines.jpg":
         return ines

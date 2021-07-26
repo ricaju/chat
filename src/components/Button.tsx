@@ -16,9 +16,11 @@ export const Button: FC<Props> = memo(function Button({ className, onClick, vari
     return classNames(style.root, [style[`${variant}`], className]);
   }, [className, variant]);
 
-  return <button className={buttonClassNames} onClick={onClick}>
-    {children}
-  </button>;
+  return(
+    <button className={buttonClassNames} onClick={onClick}>
+      {children}
+    </button>
+  )
 });
 
 function useButton() {

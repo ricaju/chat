@@ -8,6 +8,7 @@
 
 .content {
   display: flex;
+  margin-bottom: rem(24);
 }
 
 .iconContainer {
@@ -39,6 +40,12 @@
       transform: translateY(-50%);
     }
   }
+
+  &:last-child {
+    > div {
+    margin-bottom: unset
+    }
+  }
 }
 .textContainer {
   background-color: $color-white;
@@ -65,10 +72,6 @@
   display: flex;
   margin-top: rem(12);
   align-items: center;
-}
-
-.chatContainer {
-  margin-bottom: rem(24);
 }
 
 .chatTime {
